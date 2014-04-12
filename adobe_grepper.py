@@ -79,7 +79,3 @@ raw_input('end')
 
 #	for item in get_pass:
 #		os.system('cut -d"," -f2 '+search+'.txt | tail -n +2 |sort -u')
-
-
-
-#07741264499
