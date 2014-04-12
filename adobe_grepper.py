@@ -8,7 +8,6 @@ try:
 except ImportError:
 	pretty = False
 
-os.system('printf "\033c"')
 search = raw_input('Enter a person, business or email: ')
 
 date = strftime('%d_%b_%Y', gmtime())
