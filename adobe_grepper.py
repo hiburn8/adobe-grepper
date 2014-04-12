@@ -22,10 +22,14 @@ os.system('mkdir '+folder)
 
 os.system('cut -d"," -f1 '+search+'.txt > '+search+'_users.txt')
 
-fp = open(search+".txt", "r")
-pt = from_csv(fp)
-fp.close()
-print pt
+if pretty == True: 
+	fp = open(search+".txt", "r")
+	pt = from_csv(fp)
+	fp.close()
+	print pt
+else:
+	print 'All results saved to '+search+'.txt'
+	print 'Users list saved to '+search+'_users.txt'
 
 #find password re-use
 os.system('cut -d "," -f2 '+search+'.txt | sort | uniq -c | sort | grep "^......[2-9]" | sed "s/ //g" | sed "s/^[0-9].//g" > tmp')
@@ -40,12 +44,13 @@ with open('tmp', 'r') as f:
 for item in common_pass:
 	os.system('grep '+item+' '+search+'.txt >> '+search+'_common.txt')
 
-
-fp = open(search+"_common.txt", "r")
-pt = from_csv(fp)
-fp.close()
-
-print pt
+if pretty == True: 	
+	fp = open(search+"_common.txt", "r")
+	pt = from_csv(fp)
+	fp.close()
+	print pt
+else:
+	print 'Password reuse saved to '+search+'_common.txt'
 
 get_pass = []
 print 'Paste passwords for targetted search (eg. AAAAA== BBBBB== CCCCC==) or type ALL to do full recursive search:'   
@@ -68,11 +73,13 @@ else:
 #		os.system('grep -F '+item+' cred >> tmp')
 #	os.system('cat tmp | cut -d"|" -f3,4,5 | sed "s/-|-/, /g" | sed "s/-//g" >> '+search+'_search.txt')
 
-	fp = open(search+"_search.txt", "r")
-	pt = from_csv(fp)
-	fp.close()
-	print pt
-
+	if pretty == True: 
+		fp = open(search+"_search.txt", "r")
+		pt = from_csv(fp)
+		fp.close()
+		print pt
+	else:
+	print 'Search results saved to '+search+'_search.txt'
 
 raw_input('end')
 
