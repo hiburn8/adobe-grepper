@@ -14,8 +14,8 @@ date = strftime('%d_%b_%Y', gmtime())
 folder = search+'-'+date
 os.system('mkdir '+folder)
 
-#os.system('echo Email, Password, Hint > '+search+'.txt')
-#os.system('grep '+search+' cred | cut -d"|" -f3,4,5 | sed "s/-|-/, /g" | sed "s/-//g" >> '+search+'.txt')
+os.system('echo Email, Password, Hint > '+search+'.txt')
+os.system('grep '+search+' cred | cut -d"|" -f3,4,5 | sed "s/-|-/, /g" | sed "s/-//g" >> '+search+'.txt')
 
 #is there an issue?
 #os.system('cat results.txt | cut -d"," -f4 | uniq -c >> err.lst')
@@ -66,12 +66,12 @@ if mode == 'all':
 			os.system('grep "'+line+'" cred > '+search+'_'+line+'.txt')
 else:
 	get_pass = mode.split()
-#	os.system('echo > tmp')
-#	os.system('echo Email, Password, Hint > '+search+'_search.txt')
+	os.system('echo > tmp')
+	os.system('echo Email, Password, Hint > '+search+'_search.txt')
 	for item in get_pass:
 		print 'finding '+item+'.'
-#		os.system('grep -F '+item+' cred >> tmp')
-#	os.system('cat tmp | cut -d"|" -f3,4,5 | sed "s/-|-/, /g" | sed "s/-//g" >> '+search+'_search.txt')
+		os.system('grep -F '+item+' cred >> tmp')
+	os.system('cat tmp | cut -d"|" -f3,4,5 | sed "s/-|-/, /g" | sed "s/-//g" >> '+search+'_search.txt')
 
 	if pretty == True: 
 		fp = open(search+"_search.txt", "r")
